@@ -1,0 +1,807 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #2d323e;
+}
+
+:root{
+    --backgroud-blue : #ebf6ff;
+    /* --blue: #039be5; */
+    --blue: #32a5dd;
+    --light-black: #2a2a2ad0;
+}
+
+html, body, main {
+    height: 100%;
+}
+
+ul {
+    padding-left: 0;
+}
+
+main {
+    display: flex;
+}
+
+section{
+    background: #f8f9fb;
+    overflow: auto;
+    display: none;
+    width: 100%;
+    padding: 40px 60px;
+}
+
+.sectionDesc{
+    color: var(--light-black);
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.subtitle {
+    font-size: 16px;
+    display: block;
+    opacity: 0.75;
+    font-weight: 500;
+}
+
+.wrapper{
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    padding: 10px 25px 15px 25px;
+}
+
+.content-title{
+    border-bottom: 1px solid rgb(227, 227, 227);
+    padding: 10px 25px;
+    font-weight: 500;
+    font-size: 18px;
+    display: block;
+}
+
+.column-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+input[type='date']{
+    position: relative;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0;
+    margin-right: 3px;
+}
+select::selection{
+    display: none;
+}
+
+
+/* ---------------------------------------- ASIDE ------------------------------------------ */
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo-img{
+    width: 70px;
+}
+.logo-text { 
+    margin: 0;
+    padding-top: 8px;
+}
+
+aside{
+    display: flex;
+    flex: 0 0 300px;
+    flex-direction: column;
+    align-items: start;
+    padding: 35px 20px;
+    gap: 90px;
+    border-right: #e6e6e6 1px solid;
+}
+.aside-ul{
+    width: 100%;
+    list-style: none;
+}
+.aside-li a{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.7;
+    margin-bottom: 25px;
+    text-decoration: none;
+    padding: 5px 15px;
+    font-size: 17px;
+    transition: color 0.5s, background-color 0.5s;
+    border-radius: 4px;
+    color: inherit;
+}
+.aside-li a:visited{
+    color: #000;
+}
+.aside-li a:hover{
+    background: #ebf6ff;
+    color: #039be5;
+}
+.aside-li a:hover img{
+    filter: none;
+}
+.aside-li img {
+    filter: contrast(0);
+    transition: all 0.5s;
+}
+.aside-li a.active {
+    background: #ebf6ff;
+    color: #039be5;
+}
+.aside-li a.active img {
+    filter: none;
+}
+
+section.active{
+    display: block;
+}
+
+/*----------------------- DASHBOARD SECTION ---------------------*/
+
+
+/* .dashboard-accountSummary span {
+    font-size: 16px;
+    display: block;
+    opacity: 0.75;
+    font-weight: 500;
+} */
+
+.accountSummary-income { 
+    margin-right: auto;
+}
+.totalIncome { 
+    font-size: 50px;
+    color: var(--blue);
+    font-weight: 500;
+}
+.lastIncome { 
+    background: #009fff2b;
+    border-radius: 20px;
+    text-align: center;
+    padding: 2px 20px;
+    font-weight: 400;
+    color: #00aaff;
+    margin-top: 4px;
+}
+.divider { 
+    width: 5px;
+    background: #ececed;
+    border-radius: 20px;
+}
+.accountSummary-spend{
+    /* width: 50%; */
+    margin-right: auto;
+    padding-left: 20px;
+}
+.totalSpend { 
+    font-size: 50px;
+    color: #e54848;
+    font-weight: 500;
+}
+.lastSpend { 
+    background: #fbb4b4;
+    border-radius: 20px;
+    text-align: center;
+    padding: 2px 20px;
+    color: #bb3434;
+    margin-top: 4px;
+}
+
+.chartTitle {
+    border-bottom: 1px solid rgb(227, 227, 227);
+    padding: 6px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chartTitle > *{
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0;
+}
+.chartTitle select {
+    border: 0;
+    outline: 0;
+    text-align: right;
+    border-radius: 6px;
+    padding: 1px 5px;
+}
+.chart-container{
+    height: 420px;
+}
+.dashboard-pendingBills{
+    max-height: 265px;
+}
+.pendingBills-content {
+    overflow: overlay;
+    height: 253px;
+}
+.pendingBills-content::-webkit-scrollbar {
+    display: none;
+}
+.billCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 10px;
+    margin: 0;
+}
+.billCard > * {
+    margin: 0;
+}
+.noBillCards {
+    text-align: center;
+    color: #c9c9c9;
+    font-size: 22px;
+    width: 70%;
+    align-self: center;
+    margin: auto 0;
+}
+
+
+/*----------------------- EXPENSES SECTION ---------------------*/
+
+.expenses-income .row {
+    border-bottom: 3px solid transparent ;
+    /* border-color: #cbcbcb; */
+    transition: border-color 0.3s;
+    padding: 3px 0;
+}
+.expenses-income .row:hover {
+    border-bottom: #cbcbcb 3px solid  ;
+}
+.expenses-income .row:focus-within {
+    border-bottom: 3px solid var(--blue) ;
+    
+}
+.expenses-income input {
+    border: none;
+    border-radius: 3px;
+    padding: 4px 7px;
+}
+.expenses-income input:focus-visible {
+    border: none;
+    outline: none;
+    background: #eeecec;
+}
+
+.income-name { 
+    width: 50%;
+}
+.income-amount {
+    width: 105px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.createCategory-text{
+    border: 1px solid #9e9e9e;
+    border-radius: 3px;
+    padding: 5px 0 5px 6px;
+    width: 190px;
+}
+.createCategory-color{
+    width: 90px;
+    height: 34px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.createCategory-color::-webkit-color-swatch {
+    border-radius: 3px;
+    border: none;
+}
+
+.createCategoryButton{
+    padding: 4px 18px;
+    background-color: var(--backgroud-blue);
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    border-radius: 3px;
+    transition: color 0.3s, background-color 0.3s;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+}
+
+.createCategoryButton:hover{
+    color: #f8f9fb;
+    background: var(--blue);
+}
+
+.category-ul {
+    display: flex;
+    gap: 8px;
+}
+
+.category-li{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    list-style-type: none;
+    padding: 4px 12px;
+    border-radius: 3px;
+}
+
+.category-li-input[disabled]{
+    background: transparent;
+    border: 0px transparent solid;
+    outline: 0px transparent;
+}
+.category-li-input{
+    background: transparent;
+    border: 0px black solid;
+    outline: 0px #7b7b7b00 solid;
+    padding: 1px 0;
+}
+
+.category-li img {
+    cursor: pointer;
+    width: 16px;
+}
+
+.cost-table .row {
+    padding: 5px 0;
+    transition: background-color 0.25s;
+}
+
+.inputDiv { 
+    width: 29%;
+}
+
+.cost-input{
+    background: #ffffff69;
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    padding: 2px;
+    width: 60%; 
+    transition: background-color 0.25s;
+}
+.cost-input:focus-visible{
+    outline: none;
+    
+}
+.cost-input:hover{
+    background: #ffffffb0;
+}
+.cost-input:focus-within{
+    background: #ffffffb0;
+}
+
+select.cost-input {
+    padding-left: 15px;
+}
+
+.deleteRowBtn {
+    background: #f3f1f1bd;
+    border: none;
+    display: inline;
+    width: 35px;
+    border-radius: 6px;
+    padding: 0px 0px;
+}
+.cost-table .deleteRowBtn { 
+    display: flex;
+    padding: 6.5px 17px;
+    position: absolute;
+    justify-content: center;
+    right: 0;
+    align-items: center;
+    margin-right: 15px;
+}
+
+
+/*----------------------- BILLS SECTION ---------------------*/
+
+.bills-inputDate{
+    border: none;
+    background: #eeecec;
+    border-radius: 6px;
+    padding: 4px 7px 4px 10px;
+    width: 170px;
+    text-align: center;
+    font-size: 16px;
+}
+.bills-inputDate:focus-visible{
+    outline: none;
+    outline: 1px solid rgb(192, 192, 192);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.bills-inputPrice{
+    text-align: right;
+    border: none;
+    background: #eeecec;
+    border-radius: 6px;
+    padding: 4px 7px 4px 10px;
+    width: 145px;
+    font-size: 16px;
+}
+.bills-inputPrice:focus-visible{
+    outline: none;
+    outline: 1px solid rgb(192, 192, 192);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.bills-img {
+    width: 45px;
+}
+
+.bills-table  .row {
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s;
+    padding: 6px 0;
+}
+.bills-table .row:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.bills-table .row:focus-within {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.bills-daysRemaining {
+    margin: 0;
+}
+
+.bills-table p {
+    font-size: 16px;
+}
+
+
+/* ---------------------------------------------- SETTINGS ----------------------------------------- */
+
+.settingsBtn {
+    margin-left: 40px;
+    padding: 4px 18px;
+    background-color: var(--backgroud-blue);
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    border-radius: 3px;
+    transition: color 0.3s, background-color 0.3s;
+    cursor: pointer;
+    font-weight: 500;
+    display: block;
+    font-size: 18px;
+    align-self: end;
+}
+  
+.settingsBtn:hover{
+    color: #f8f9fb;
+    background: var(--blue);
+}
+
+/* --------------------------------------------- MEDIA QUERIES ------------------------------- */
+
+@media screen and (max-width: 1440px) {
+    section { 
+        padding: 30px 20px;
+    }
+}
+
+
+
+@media screen and (max-width: 1200px){
+
+    /* ------------------ GENERAL ----------------------- */
+
+    h2{
+        font-size: 25px;
+    }
+
+    /*   ----------------  ASIDE --------------------- */
+    aside { 
+        flex: 0 0 270px;
+    }
+    
+    .logo-text{
+        font-size: 27px;
+    }
+    .logo-img{
+        width: 65px;
+    }
+
+    /* ---------------------- DASHBOARD --------------- */
+    .totalIncome{
+        font-size: 45px;
+    }
+    .totalSpend{
+        font-size: 45px;
+    }
+
+    /* ------------------------ EXPENSES -------------- */
+    .cost-input{
+        width: 73%;
+    }
+    .cost-table .deleteRowBtn {
+        margin-right: 8px ;
+    }
+    .bills-inputPrice {
+        width: 90%;
+    }
+}
+
+
+
+@media  screen and (max-width: 768px) {
+
+    /* ------------------ GENERAL ----------------------- */
+
+    main { 
+        flex-direction: column-reverse;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    section {
+        padding: 22px 5px;
+        height: 100%;
+    }
+
+    .sectionTitle {
+        text-align: center;
+    }
+
+    .sectionDesc{
+        font-size: 16px;
+    }
+
+    .content-title{
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .subtitle{
+        font-size: 16px;
+    }
+
+    .chartTitle > * { 
+        font-size: 16px;
+    }
+
+    input {
+        font-size: 15px;
+    }
+
+    .column-title {
+        font-size: 16px;
+    }
+    
+    /*   ----------------  ASIDE --------------------- */
+
+    .logo { 
+        display: none;
+    }
+
+    aside {
+        flex: 0;
+        padding: 0;
+    }
+
+    .aside-ul{ 
+        display: flex;
+        justify-content: space-evenly;
+        margin: 0;
+    }
+
+    .aside-li{
+        width: 25%;
+        
+    }
+    .aside-li a{
+        flex-direction: column;
+        gap: 4px;
+        margin: 0;
+        height: 101px;
+        justify-content: center;
+    }
+
+    /* ---------------------- DASHBOARD --------------- */
+
+    .totalSpend, .totalIncome {
+        font-size: 40px;
+    }
+    .lastSpend, .lastIncome { 
+        font-size: 15px;
+    }
+    .chart-container {
+        height: 345px;
+        padding: 10px 35px 15px 35px;
+    }
+    .pendingBills-content { 
+        height: auto;
+        min-height: 140px;
+        max-height: 280px;
+    }
+
+    /* ---------------------- EXPENSES ------------------- */
+
+    /* .cost-input[type='date']{
+        width: 95%;
+    }
+    select.cost-input {
+        padding-left: 18px;
+    }
+    .cost-input[type='text']{
+        width: 50%;
+    } */
+    /* .cost-table .column-title {
+        width: 29%;
+    } */
+
+    .category-ul{
+        justify-content: center;
+    }
+    
+    .cost-input {
+        width: 95%;
+    }
+    .cost-table .deleteRowBtn{
+        margin-right: 2px;
+        margin-left: -13px;
+        position: relative;
+    }
+    .createCategoryButton:hover {
+        color: var(--blue);
+        background: var(--backgroud-blue);
+    }
+    .createCategoryButton:active {
+        color: #f8f9fb;
+        background: var(--blue);
+    }
+
+    /* --------------------- BILLS -------------------- */
+    .bills-table p{
+        font-size: 15px;
+    }
+
+    /* --------------------------- SETTINGS ------------------- */
+
+    .settingsText{
+        text-align: center;
+    }
+
+    .settingsBtn{
+        align-self: center;
+        margin: 20px 0;
+    }
+
+    .settingsBtn:hover {
+        color: var(--blue);
+        background: var(--backgroud-blue);
+    }
+    .settingsBtn:active {
+        color: #f8f9fb;
+        background: var(--blue);
+    }
+
+}
+
+@media  screen and (max-width: 575px) {
+
+    /* ---------------------- GENERAL -------------------------- */
+
+    section {
+        padding: 18px 0px;
+        height: 100%;
+    }
+    .subtitle {
+        text-align: center;
+    }
+
+    /* ------------------- ASIDE -------------------- */
+    .aside-li img {
+        width: 29px;
+    }
+    .aside-li a {
+        font-size: 15px;
+    }
+
+    /* --------------------- DASHBOARD -------------------- */
+
+    .divider {
+        height: 5px;
+        width: 90%;
+        margin-bottom: 18px;
+    }
+    .accountSummary-spend, .accountSummary-income {
+        margin: 0;
+    }
+    .accountSummary-spend {
+        padding-left: 0;
+    }
+    .totalSpend, .totalIncome {
+        text-align: center;
+    }
+
+    .chart-container {
+        height: 300px;
+        padding: 10px 5px 15px 5px;
+    }
+    .billCard {
+        font-size: 13px;
+    }
+
+    /* ------------------------- EXPENSES ------------------- */
+    
+    .cost-table {
+        padding: 0 4px;
+    }
+    select.cost-input {
+        padding-left: 2px;
+    }
+    .inputDiv {
+        padding: 0 1px;
+    }
+
+    .deleteRowBtn {
+        padding: 5.5px 12px;
+        width: 19px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cost-table .deleteRowBtn {
+        margin-right: 0px;
+        margin-left: -4px;
+        padding: 5.5px 12px;
+        width: 19px;
+    }
+
+    .deleteRowBtn > img {
+        width: 12px;
+    }
+
+    /* ---------------------- BILLS --------------------- */
+
+    .bills-table {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .bills-inputDate {
+        font-size: 14px;
+        padding-left: 2px;
+        width: 100%;
+    }
+    .bills-inputPrice{
+        font-size: 14px;
+    }
+    .bills-img {
+        width: 33px;
+    }
+    .bills-table p {
+        font-size: 13px;
+    }
+
+}
+
+
+@media  screen and (max-width: 385px) {
+    .income-amount {
+        width: 75px;
+    }
+}

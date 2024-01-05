@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>BudgetApp</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="shortcut icon" href="./imgs/wallet.png" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <aside>
+            <div class="logo">
+                <img class="logo-img" src="./imgs/wallet.png" alt="logo-wallet">
+                <h2 class="logo-text">BudgetApp</h2>
+            </div>
+            <ul class="aside-ul">
+                <li class="aside-li" aria-label="dashboard"><a aria-label="dashboard" href="#"> <img  src="./imgs/dashboard.png" alt="dashboard-icon"> Dashboard</a></li>
+                <li class="aside-li" aria-label="expenses"><a aria-label="expenses" href="#"> <img  src="./imgs/coin.png" alt="dolar-icon"> Expenses</a></li>
+                <li class="aside-li" aria-label="bills"><a aria-label="bills" href="#"> <img  src="./imgs/payments.png" alt="credit-card-icon"> Bills</a></li>
+                <li class="aside-li" aria-label="settings"><a aria-label="settings" href="#"> <img  src="./imgs/settings.png" alt="settings-icon"> Settings</a></li>
+            </ul>
+        </aside>
+
+        <section id="dashboard" class="active">      
+            <div class="container-fluid d-flex flex-column">
+                <div class="sectionTitle pb-2">
+                    <h2>Dashboard</h2>
+                    <h3 class="sectionDesc">Overview</h3>
+                </div>      
+                <div class="row gap-xl-0 gap-4">
+                    <div class="col-xl-6 col-12 d-flex flex-column gap-3 gap-sm-4">
+                        <div class="dashboard-accountSummary wrapper">
+                            <h3 class="content-title">Account Summary</h3>
+                            <div class="content d-flex align-items-center align-items-sm-stretch justify-content-between flex-column flex-sm-row">
+                                <div class="accountSummary-income">
+                                    <span class="subtitle">Total Balance</span>
+                                    <p class="totalIncome">$0   </p>
+                                    <span class="subtitle">Latest Income</span>
+                                    <p class="lastIncome "><img src="./imgs/incrementar.png" alt=""> <span>No recent income</span> </p>
+
+                                </div>
+                                <div class="divider"></div>
+                                <div class="accountSummary-spend">
+                                    <span class="subtitle">Total Spending</span>
+                                    <p class="totalSpend"> $0 </p>
+                                    <span class="subtitle">Latest Spend</span>
+                                    <p class="lastSpend "><img src="./imgs/disminucion.png" alt=""> <span>No recent spend</span> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper">
+                            <div class="chartTitle">
+                                <h3 class="">Time Scale Chart</h3>
+                                <select name="" id="scaleChartSelector">
+                                    <option value="week" selected>Last week</option>
+                                    <option value="month">Last month</option>
+                                </select>
+                            </div>
+                            <div class="content chart-container">
+                                <canvas id="scaleChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-12 d-flex flex-column gap-3 gap-sm-4">
+                        <div class="wrapper order-xl-0 order-1">
+                            <div class="chartTitle">
+                                <h3 >Pie chart</h3>
+                                <select name="" id="chartSelector">
+                                    <option value="total" >Total</option>
+                                    <option value="expenses" selected>Expenses</option>
+                                    <option value="bills">Bills</option>
+                                </select>
+                            </div>
+                            <div class="content chart-container ">
+                                <canvas id="chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="dashboard-pendingBills wrapper order-xl-1 order-0">
+                            <h3 class="content-title">Pending Bills</h3>
+                            <div class="pendingBills-content d-flex flex-column">
+                                
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="expenses" >
+            <div class="container-fluid d-flex flex-column ">
+
+                <div class="sectionTitle pb-2">
+                    <h2>Expenses</h2>
+                    <h3 class="sectionDesc">Costs Managment</h3>
+                </div>
+                <div class="expenses-category container-fluid px-0">
+                    <div class="row justify-content-between gap-xl-0 gap-3 gap-sm-4 pb-3 pb-sm-4">
+                        <div class="col-xl-5 col-12">
+                            <div class="wrapper h-100 expenses-income">
+                                <h3 class="content-title">Incomes</h3>
+                                <div class="content d-flex flex-column gap-1" role="table" aria-label="income">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-12">
+                            <div class="wrapper h-100">
+                                <h3 class="content-title">List of Categories</h3>
+                                <ul class="content category-ul flex-wrap">
+                                
+                                </ul>
+                                <span class="subtitle content pb-0">Add new category</span>
+                                <div class="content d-flex align-items-center justify-content-center justify-content-md-start flex-wrap gap-3" role="createCategory">
+                                    <input class="createCategory-text" type="text" name="name" placeholder="Name">
+                                    <input class="createCategory-color" type="color" name="color" value="#c0e5f2">
+                                    <button class="createCategoryButton">Create category</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="expenses-costs container-fluid px-0">
+                    <div class="wrapper">
+                        <h3 class="content-title">Spendings</h3>
+                        <div class="cost-table container-fluid d-flex flex-column gap-3 gap-sm-2 pb-4" role="table">
+                            <div class="w-100 d-flex justify-content-evenly text-center">
+                                <div class="inputDiv d-flex align-items-center justify-content-center"><h4 class="column-title">Date</h4></div>
+                                <div class="inputDiv d-flex align-items-center justify-content-center"><h4 class="column-title">Category</h4></div>
+                                <div class="inputDiv d-flex align-items-center justify-content-center"><h4 class="column-title">Price</h4></div>
+                                <button class="deleteRowBtn invisible"><img src="./imgs/borrar.png"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bills" >            
+            <div class="expenses-bills container-fluid d-flex flex-column ">
+                <div class="sectionTitle pb-2">
+                    <h2>Bills</h2>
+                    <h3 class="sectionDesc">Fixed payments</h3>
+                </div>
+                <div class="wrapper">
+                    <h3 class="content-title">Bills</h3>
+                    <div class="bills-table container-fluid d-flex flex-column gap-3 pt-2 pb-4">
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-sm-3 col-4 d-flex align-items-center ps-xl-5 ps-3"><h4 class="column-title m-0 ps-4">Name</h4></div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center"><h4 class="column-title m-0">Expires on</h4></div>
+                            <div class="col-sm-3 d-none d-sm-flex justify-content-center"><h4 class="column-title m-0">Time left</h4></div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center"><h4 class="column-title m-0">Amount</h4></div>
+                        </div>
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-sm-3 col-4 d-flex align-items-center gap-1 gap-sm-2 ps-xl-5 ps-3">
+                                <img class="bills-img" src="./imgs/casa.png" alt="rent-icon">
+                                <p class="bills-name d-inline m-0 " color="#f26946" aria-label="spendName">Rent</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center px-0">
+                                <input class="bills-inputDate" type="date" name="" id="" data-spend>
+                            </div>
+                            <div class="col-sm-3 col4 d-none d-sm-flex justify-content-center">
+                                <p class="bills-daysRemaining">0 days</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center">
+                                <input class="bills-inputPrice" aria-label="spendAmount" type="text" placeholder="$0" data-spend>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-sm-3 col-4 d-flex align-items-center gap-1 gap-sm-2 ps-xl-5 ps-3">
+                                <img class="bills-img" src="./imgs/agua.png" alt="water-icon">
+                                <p class="bills-name d-inline m-0 " color="#4285f4" aria-label="spendName">Water</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center px-0">
+                                <input class="bills-inputDate" type="date" name="" id="" data-spend>
+                            </div>
+                            <div class="col-sm-3 col4 d-none d-sm-flex justify-content-center">
+                                <p class="bills-daysRemaining">0 days</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center">
+                                <input class="bills-inputPrice" aria-label="spendAmount" type="text" placeholder="$0" data-spend>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-sm-3 col-4 d-flex align-items-center gap-1 gap-sm-2 ps-xl-5 ps-3">
+                                <img class="bills-img" src="./imgs/bombilla.png" alt="electricity-icon">
+                                <p class="bills-name d-inline m-0 " color="#81592f" aria-label="spendName">Electricity</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center px-0">
+                                <input class="bills-inputDate" type="date" name="" id="" data-spend>
+                            </div>
+                            <div class="col-sm-3 col4 d-none d-sm-flex justify-content-center">
+                                <p class="bills-daysRemaining">0 days</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center">
+                                <input class="bills-inputPrice" aria-label="spendAmount" type="text" placeholder="$0" data-spend>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-sm-3 col-4 d-flex align-items-center gap-1 gap-sm-2 ps-xl-5 ps-3">
+                                <img class="bills-img" src="./imgs/gas.png" alt="gas-icon">
+                                <p class="bills-name d-inline m-0 " color="#0f9d58" aria-label="spendName">Gas</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center px-0">
+                                <input class="bills-inputDate" type="date" name="" id="" data-spend>
+                            </div>
+                            <div class="col-sm-3 col4 d-none d-sm-flex justify-content-center">
+                                <p class="bills-daysRemaining">0 days</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center">
+                                <input class="bills-inputPrice" aria-label="spendAmount" type="text" placeholder="$0" data-spend>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-sm-3 col-4 d-flex align-items-center gap-1 gap-sm-2 ps-xl-5 ps-3">
+                                <img class="bills-img" src="./imgs/globo.png" alt="internet-icon">
+                                <p class="bills-name d-inline m-0 " color="#4d3292" aria-label="spendName">Internet</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center px-0">
+                                <input class="bills-inputDate" type="date" name="" id="" data-spend>
+                            </div>
+                            <div class="col-sm-3 col4 d-none d-sm-flex justify-content-center">
+                                <p class="bills-daysRemaining">0 days</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center">
+                                <input class="bills-inputPrice" aria-label="spendAmount" type="text" placeholder="$0" data-spend>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-sm-3 col-4 d-flex align-items-center gap-1 gap-sm-2 ps-xl-5 ps-3">
+                                <img class="bills-img" src="./imgs/telefono-movil.png" alt="cellphone-icon">
+                                <p class="bills-name d-inline m-0 " color="#777878" aria-label="spendName">Cellphone</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center px-0">
+                                <input class="bills-inputDate" type="date" name="" id="" data-spend>
+                            </div>
+                            <div class="col-sm-3 col4 d-none d-sm-flex justify-content-center">
+                                <p class="bills-daysRemaining">0 days</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center">
+                                <input class="bills-inputPrice" aria-label="spendAmount" type="text" placeholder="$0" data-spend>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end align-items-center">
+                            <div class="col-sm-3 col-4 d-flex align-items-center gap-1 gap-sm-2 ps-xl-5 ps-3">
+                                <img class="bills-img" src="./imgs/streaming.png" alt="streamingServices-icon">
+                                <p class="bills-name d-inline m-0 " color="#5e162a" aria-label="spendName">Streaming services</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center px-0">
+                                <input class="bills-inputDate" type="date" name="" id="" data-spend>
+                            </div>
+                            <div class="col-sm-3 col4 d-none d-sm-flex justify-content-center">
+                                <p class="bills-daysRemaining">0 days</p>
+                            </div>
+                            <div class="col-sm-3 col-4 d-flex justify-content-center">
+                                <input class="bills-inputPrice" aria-label="spendAmount" type="text" placeholder="$0" data-spend>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="settings">
+            <div class="container-fluid d-flex flex-column">
+                <div class="sectionTitle pb-2">
+                    <h2>Settings</h2>
+                    <h3 class="sectionDesc">Test mode & reset</h3>
+                </div>
+                <div class="wrapper content">
+                    <div class="d-flex flex-column flex-md-row mb-4 mt-2">
+                        <div class="settingsText">
+                            <h4>Reset app</h4>
+                            <p class="m-0">Deletes all the data </p> 
+                        </div>
+                        <button class="settingsBtn" id="resetData">Reset</button>
+                    </div>
+
+                    <div class="d-flex flex-column flex-md-row mb-4">
+                        <div class="settingsText">
+                            <h4>Test mode</h4>
+                            <p class="m-0">Creates random data for you to test the webapp </p> 
+                        </div>
+                        <button class="settingsBtn" id="testMode">Test mode</button>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="./js/main.mjs"></script>
+</body>
+</html>

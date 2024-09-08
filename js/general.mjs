@@ -4,11 +4,10 @@ export const convertToArray = (iterableObject) => {
   return array
 }
 
-export function formatPrice (e) {
-  console.log(e.target) 
+export function formatPrice(e) {
   const input = e.target ? e.target : e
-  if(input.value === ``) return
-  let price = input.value ?  input.value.replace(/\D/g, '') : input.replace(/\D/g, '') 
+  if (input.value === ``) return
+  let price = input.value ? input.value.replace(/\D/g, '') : input.replace(/\D/g, '')
   price = addColons(price)
 
   if (!price.startsWith('$')) {
@@ -18,11 +17,11 @@ export function formatPrice (e) {
     price = ''
   }
 
-  if(e.target) input.value = price
-  else return price 
+  if (e.target) input.value = price
+  else return price
 }
 
-export function addColons (price) {
+export function addColons(price) {
   const reversed = price.split('').reverse().join('')
   const formatted = reversed.replace(/(\d{3})(?=\d)/g, '$1,')
   return formatted.split('').reverse().join('')

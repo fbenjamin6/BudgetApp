@@ -3,7 +3,7 @@ import { updateLatestIncome, updateLatestSpend, createChart, updateChart, update
 import { getCategoriesArray, createCategory, createIncomeRow, createCostRow, selectColorChange } from './expenses.mjs'
 import { updatePendingBills, updateDaysRemaining } from './bills.mjs'
 import { formatPrice } from './general.mjs'
-import {} from './setttings.mjs'
+import { } from './setttings.mjs'
 
 const localStorage = window.localStorage
 
@@ -45,7 +45,6 @@ window.addEventListener('beforeunload', () => {
     const price = row.querySelector('.bills-inputPrice').value
     arrayOfBillsRows.push([date, price])
   })
-  console.log(arrayOfBillsRows)
   localStorage.setItem('billsRows', JSON.stringify(...[arrayOfBillsRows]))
 
   const activeSection = document.querySelector('section.active')

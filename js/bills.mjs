@@ -3,7 +3,7 @@ import { convertToArray } from './general.mjs'
 export const updateDaysRemaining = (e) => {
   const row = e.target ? e.target.closest('.row') : e.closest('.row')
   const inputDateValue = e.target ? e.target.value : e.value
-  console.log(inputDateValue)
+
   const date = new Date(inputDateValue)
   const dateParsed = Date.parse(date)
   const dateHours = dateParsed / 1000 / 60 / 60
@@ -15,7 +15,6 @@ export const updateDaysRemaining = (e) => {
   const dif = date.getTimezoneOffset()
   const remainingHours = dateHours - dateNowHours + dif / 60
   const remainingDays = Math.ceil(remainingHours / 24)
-  console.log(remainingHours)
 
   const paragraph = row.querySelector('.bills-daysRemaining')
 

@@ -30,8 +30,8 @@ export const updateLatestIncome = () => {
   const lastIncome = filteredArray[filteredArray.length - 1]
   lastIncome
     ? lastSpend.textContent =
-  lastIncome.querySelector('.income-name').value + ' ' +
-  lastIncome.querySelector('.income-amount').value
+    lastIncome.querySelector('.income-name').value + ' ' +
+    lastIncome.querySelector('.income-amount').value
     : lastSpend.textContent = 'No recent income'
 }
 
@@ -47,7 +47,7 @@ export const updateLatestSpend = () => {
     const category = row.getAttribute('aria-label') === 'bill'
       ? row.querySelector('[aria-label="spendName"]').textContent
       : row.querySelector('[aria-label="spendName"]').value
-    console.log(category)
+
     const price = row.querySelector('[aria-label="spendAmount"]').value
     if (category !== '' && category !== 'none' && price !== '' && price !== '$') {
       const lastSpend = document.querySelector('.lastSpend span')
@@ -170,7 +170,7 @@ export const updateChart = () => {
 
   if (chartSelector === 'bills') {
     const billsRows = document.querySelectorAll('.bills-table .row')
-    console.log(billsRows)
+
     billsRows.forEach((row, index) => {
       if (index === 0) return
       const name = row.querySelector('[aria-label="spendName"]')
@@ -297,7 +297,7 @@ export const updateScaleChart = () => {
     })
 
     rowsSorted.forEach(row => {
-      const object = { }
+      const object = {}
 
       const date = row.querySelector('input[type="date"]').value
       if (date === '') return

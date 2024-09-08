@@ -268,9 +268,9 @@ const addRowListener = (e) => {
   const lastRow = table.lastElementChild
   const inputs = lastRow.querySelectorAll("[role='inputData']")
   const inputsArray = convertToArray(inputs)
-  console.log(lastRow)
+
   const areInputsFilled = inputsArray.every(input => input.value !== '')
-  console.log(inputs)
+
   if (areInputsFilled) {
     inputsArray.forEach(input => input.removeEventListener('change', addRowListener))
     table.getAttribute('aria-label') === 'income'

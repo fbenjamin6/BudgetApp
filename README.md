@@ -1,6 +1,5 @@
 # BudgetApp
 
-## Descripción
 **BudgetApp** es una aplicación web creada para facilitar la gestión de gastos personales de manera organizada. Permite a los usuarios realizar un seguimiento de sus ingresos, gastos y facturas recurrentes. Está diseñada para personas que buscan llevar un control financiero, ya sea para ahorrar, planificar el pago de facturas o simplemente entender mejor sus hábitos de gasto.
 
 ## Tecnologías Utilizadas
